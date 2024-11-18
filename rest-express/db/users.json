@@ -1,9 +1,1 @@
-[
-  { "id": 1, "name": "Aqua", "email": "aqua@gmail.com", "password": "aqua123" },
-  {
-    "id": 2,
-    "name": "Deepwood",
-    "email": "deepwood@gmail.com",
-    "password": "deepwood123"
-  }
-]
+[{"id":2,"name":"Dodo","email":"deepwood@gmail.com","password":"deepwood123"},{"id":4,"name":"Raiden","email":"raiden@gmail.com","password":"shogun123"},{"id":5,"name":"Shazam","email":"shazam@gmail.com","password":"shazam123"}]
