@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "title": "Nasi Padang",
+    "nominal": 15000,
+    "type": "expense",
+    "category": "food",
+    "date": "2024-10-20"
+  },
+  {
+    "id": 2,
+    "title": "part time",
+    "nominal": 700000,
+    "type": "income",
+    "category": "salary",
+    "date": "2024-10-01"
+  },
+  {
+    "id": 3,
+    "title": "bensin",
+    "nominal": 70000,
+    "type": "expense",
+    "category": "transport",
+    "date": "2024-11-15"
+  },
+  {
+    "id": 4,
+    "title": "Bakso",
+    "nominal": 15000,
+    "type": "expense",
+    "category": "food",
+    "date": "2024-11-10"
+  },
+  {
+    "id": 5,
+    "title": "Gaji Oktober",
+    "nominal": 9000000,
+    "type": "income",
+    "category": "salary",
+    "date": "2024-10-01"
+  },
+  {
+    "id": 6,
+    "title": "Gaji November",
+    "nominal": 9000000,
+    "type": "income",
+    "category": "salary",
+    "date": "2024-11-01"
+  },
+  {
+    "id": 7,
+    "title": "Sushi",
+    "nominal": 200000,
+    "type": "expense",
+    "category": "food",
+    "date": "2024-10-15"
+  },
+  {
+    "id": 8,
+    "title": "Ramen",
+    "nominal": 50000,
+    "type": "expense",
+    "category": "food",
+    "date": "2024-11-05"
+  }
+]
