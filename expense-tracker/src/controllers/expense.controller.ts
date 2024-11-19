@@ -9,16 +9,14 @@ export class ExpenseController {
       fs.readFileSync("./db/expenses.json", "utf-8")
     );
 
-    if (title) {
-      expenses = expenses.filter((item) =>
-        item.title.toLowerCase().includes(title as string)
-      );
-    }
-
     expenses = expenses.filter((item) => {
       let isValid: boolean = true;
       if (category) {
         isValid = isValid && item.category == category;
+      }
+
+      if (title) {
+        isValid = isValid && item.title.toLowerCase().includes(title as string);
       }
 
       if (start && end) {
