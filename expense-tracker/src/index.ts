@@ -26,7 +26,16 @@ pool.connect((err, client, release) => {
     return console.log("Error acquiring client", err.stack);
   }
 
-  console.log("Success connection ✔");
+  if (client) {
+    client.query("SET search_path TO test", (queryErr) => {
+      if (queryErr) {
+        console.log("Error setting search path", queryErr.stack);
+      } else {
+        console.log('Success connection "test" ✔');
+      }
+    });
+  }
+
   release();
 });
 

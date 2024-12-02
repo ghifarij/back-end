@@ -16,6 +16,7 @@ export class ExpenseV2Router {
     this.router.post("/", this.expenseV2Controller.newExpense);
 
     this.router.get("/:id", this.expenseV2Controller.getExpenseById);
+    this.router.patch("/:id", this.expenseV2Controller.editExpense);
     this.router.delete("/:id", this.expenseV2Controller.deleteExpense);
   }
 
