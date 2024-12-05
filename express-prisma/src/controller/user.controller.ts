@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
 import prisma from "../prisma";
 import { Prisma } from "@prisma/client";
+import { cloudinaryUpload } from "../services/cloudinary";
 
 export class UserController {
   async getUsers(req: Request, res: Response) {
     try {
-      const { search, page = 1, limit = 3 } = req.query;
+      const { search, page = 1, limit = 5 } = req.query;
 
       const filter: Prisma.UserWhereInput = {};
       if (search) {
@@ -46,7 +47,7 @@ export class UserController {
   async createUser(req: Request, res: Response) {
     try {
       await prisma.user.create({ data: req.body });
-      res.status(201).send({ message: "user created ✅" });
+      res.status(201).send({ message: "user created " });
     } catch (err) {
       console.log(err);
       res.status(400).send(err);
@@ -57,7 +58,7 @@ export class UserController {
     try {
       const { id } = req.params;
       await prisma.user.update({ data: req.body, where: { id: +id } });
-      res.status(200).send({ message: `used id = ${id} updated ✅` });
+      res.status(200).send({ message: `used id = ${id} updated` });
     } catch (err) {
       console.log(err);
       res.status(400).send(err);
@@ -68,7 +69,40 @@ export class UserController {
     try {
       const { id } = req.params;
       await prisma.user.delete({ where: { id: +id } });
-      res.status(200).send({ message: `user id = ${id} deleted ❎` });
+      res.status(200).send({ message: `user id = ${id} deleted` });
+    } catch (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+  }
+
+  async editAvatar(req: Request, res: Response) {
+    try {
+      if (!req.file) throw { message: "file empty" };
+      const link = `http://localhost:8000/api/public/avatar/${req.file.filename}`;
+      await prisma.user.update({
+        data: { avatar: link },
+        where: { id: req.user?.id },
+      });
+
+      res.status(200).send({ message: "avatar edited !" });
+    } catch (err) {
+      console.log(err);
+      res.status(400).send(err);
+    }
+  }
+
+  async editAvatarCloud(req: Request, res: Response) {
+    try {
+      if (!req.file) throw { message: "file empty" };
+      const { secure_url } = await cloudinaryUpload(req.file, "avatar");
+
+      await prisma.user.update({
+        data: { avatar: secure_url },
+        where: { id: req.user?.id },
+      });
+
+      res.status(200).send({ message: "avatar edited !" });
     } catch (err) {
       console.log(err);
       res.status(400).send(err);
