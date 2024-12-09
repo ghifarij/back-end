@@ -5,6 +5,8 @@ import { BlogRouter } from "./router/blog.router";
 import { AuthRouter } from "./router/auth.router";
 import cookieParser from "cookie-parser";
 import path from "path";
+import { PostRouter } from "./router/post.router";
+import { OrderRouter } from "./router/order.router";
 
 const PORT: number = 8000;
 
@@ -27,10 +29,14 @@ app.use("/api/public", express.static(path.join(__dirname, "../public")));
 const userRouter = new UserRouter();
 const blogRouter = new BlogRouter();
 const authRouter = new AuthRouter();
+// const postRouter = new PostRouter();
+const orderRouter = new OrderRouter();
 
 app.use("/api/users", userRouter.getRouter());
 app.use("/api/blogs", blogRouter.getRouter());
 app.use("/api/auth", authRouter.getRouter());
+// app.use("/api/posts", postRouter.getRouter());
+app.use("/api/orders", orderRouter.getRouter());
 
 console.log(process.env.JWT_KEY);
 

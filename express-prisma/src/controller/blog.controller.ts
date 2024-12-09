@@ -5,7 +5,6 @@ export class BlogController {
   async getBlogs(req: Request, res: Response) {
     try {
       const blogs = await prisma.blog.findMany({
-        // include: { user: true },
         select: {
           id: true,
           title: true,
